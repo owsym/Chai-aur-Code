@@ -1,0 +1,1 @@
+gunicorn chaiaurDjango.wsgi:application
