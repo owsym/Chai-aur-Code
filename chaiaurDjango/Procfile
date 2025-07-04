@@ -1,1 +1,1 @@
-gunicorn chaiaurDjango.wsgi:application
+web: gunicorn chaiaurDjango.wsgi
