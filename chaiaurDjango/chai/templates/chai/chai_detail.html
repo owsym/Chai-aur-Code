@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+CHAI Detail Page
+{% endblock %}
+
+{% block content %}
+<div class="bg-[rgb(1,22,29)] min-h-screen flex flex-col items-center py-12 px-4">
+
+  <!-- 🔁 Back Button + Heading -->
+  <div class="flex items-center justify-between w-full max-w-3xl mb-10">
+    
+    <!-- Back Button -->
+    <a href="{% url 'all_chai' %}">
+      <button class="bg-amber-700 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded-md shadow-md transition">
+        ← All Chai
+      </button>
+    </a>
+
+    <!-- Heading -->
+    <h1 class="text-amber-100 text-4xl font-bold text-center flex-grow">
+      Know Your <span class="font-extrabold">CHAI</span>.
+    </h1>
+
+    <!-- Spacer -->
+    <div class="w-[140px]"></div>
+  </div>
+
+  <!-- 📦 Chai Detail Card -->
+  <div class="bg-amber-500 text-amber-100 rounded-2xl p-8 border-2 border-white shadow-lg shadow-amber-200/40 max-w-2xl w-full text-center space-y-4">
+    <h3 class="text-3xl font-bold">{{ chai.name }}</h3>
+    <p class="text-lg leading-relaxed">{{ chai.description }}</p>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+Find Chai in Stores
+{% endblock %}
+
+{% block content %}
+<div class="bg-[rgb(1,22,29)] min-h-screen flex flex-col items-center py-12 px-4 sm:px-6">
+
+  <!-- Title Outside Card -->
+  <h1 class="text-3xl sm:text-4xl font-bold text-amber-100 mb-8 text-center">
+    Find Your <span class="font-extrabold">CHAI</span> in Stores
+  </h1>
+
+  <!-- 🔍 Form Card -->
+  <div class="bg-amber-500 text-amber-100 rounded-xl shadow-lg shadow-amber-200/50 p-6 w-full max-w-md mb-10">
+    <form method="POST" class="space-y-6">
+      {% csrf_token %}
+      <div>
+        <label for="{{ form.chai_varity.id_for_label }}" class="block text-md font-medium mb-2">
+          {{ form.chai_varity.label }}
+        </label>
+
+        <div class="relative">
+          <select
+            name="{{ form.chai_varity.name }}"
+            id="{{ form.chai_varity.id_for_label }}"
+            class="block w-full appearance-none px-4 py-2 text-sm bg-[rgb(1,22,29)] text-amber-100 border border-amber-200 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 hover:bg-amber-600/20 transition duration-200"
+          >
+            <option disabled selected>Choose your chai</option>
+            {% for option in form.fields.chai_varity.queryset %}
+              <option value="{{ option.pk }}" {% if form.chai_varity.value == option.pk %}selected{% endif %}>
+                {{ option.name }}
+              </option>
+            {% endfor %}
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+            <i class="fas fa-chevron-down text-amber-200 text-xs"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center">
+        <button type="submit" class="bg-amber-700 hover:bg-amber-600 text-white font-semibold py-2 px-6 rounded-md shadow-md transition">
+          Search Stores
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 🏬 Store Results -->
+  {% if stores %}
+    <div class="w-full max-w-4xl">
+      <h2 class="text-amber-100 text-2xl font-semibold mb-6 text-center">Available in these Stores:</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {% for store in stores %}
+          <div class="bg-amber-500 text-amber-100 rounded-lg p-6 shadow-md shadow-amber-200/30">
+            <h3 class="text-xl font-bold">{{ store.name }}</h3>
+            <p class="text-md">{{ store.location }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% elif request.method == "POST" %}
+    <p class="text-amber-100 text-lg font-medium mt-6">No stores found for the selected chai.</p>
+  {% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+CHAI Page
+{% endblock %}
+
+{% block content %}
+<div class="bg-[rgb(1,22,29)] min-h-screen py-12 px-4 flex flex-col items-center">
+
+  <!-- 🔁 Back Button + Heading -->
+  <div class="flex items-center justify-between w-full max-w-6xl mb-10">
+    <!-- Back Button -->
+    <a href="{% url 'home' %}">
+      <button class="bg-amber-700 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded-md shadow-md transition">
+        ← Home
+      </button>
+    </a>
+
+    <!-- Heading -->
+    <h1 class="text-amber-100 text-4xl font-bold text-center flex-grow">
+      All <span class="font-extrabold">CHAI</span> for you.
+    </h1>
+
+    <!-- Spacer to balance layout -->
+    <div class="w-[120px]"></div>
+  </div>
+
+  <!-- 🫖 Chai Cards Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl w-full">
+    {% for chai in chais %}
+      <div class="bg-amber-500 rounded-2xl shadow-lg shadow-amber-200/40 p-6 flex flex-col items-center text-center space-y-4 transition transform hover:scale-105 duration-300 ease-in-out">
+        
+        <img src="{{ chai.image.url }}" alt="{{ chai.name }}" class="w-32 h-32 object-cover rounded-xl shadow-md border border-white" />
+        
+        <h2 class="text-2xl font-extrabold text-white">{{ chai.name }}</h2>
+        
+        <p class="text-lg font-semibold text-amber-100">Price: {{ chai.price }}</p>
+
+        <a href="{% url 'chai_detail' chai.id %}" class="w-full">
+          <button
+            type="button"
+            class="bg-amber-800 hover:bg-amber-600 text-amber-100 w-full py-2 px-4 rounded-md text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-400 transition">
+            {{ chai.type }} - {{ chai.id }}
+          </button>
+        </a>
+
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

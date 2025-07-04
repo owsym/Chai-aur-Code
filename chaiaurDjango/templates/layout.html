@@ -1,0 +1,67 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>
+      {% block title %}
+        CHAI
+      {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    {% tailwind_css %}
+  </head>
+
+  <body class="bg-[rgb(1,22,29)]">
+    <!-- Responsive Navigation Bar -->
+    <nav class="bg-amber-500 text-amber-100 px-4 py-4 mt-4 mb-6 rounded-lg shadow-lg shadow-amber-200/50 w-full max-w-5xl mx-auto">
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:justify-between">
+
+        <!-- Home -->
+        <a href="{% url 'home' %}" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-amber-600 active:bg-amber-700 transition-all duration-300">
+          <i class="fas fa-house text-amber-100"></i>
+          <span class="hidden sm:inline">Home</span>
+        </a>
+
+        <!-- All Chai -->
+        <a href="{% url 'all_chai' %}" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-amber-600 active:bg-amber-700 transition-all duration-300">
+          <i class="fas fa-mug-hot text-amber-100"></i>
+          <span class="hidden sm:inline">All Chai</span>
+        </a>
+
+        <!-- Store -->
+        <a href="{% url 'chai_store' %}" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-amber-600 active:bg-amber-700 transition-all duration-300">
+          <i class="fas fa-store text-amber-100"></i>
+          <span class="hidden sm:inline">Store</span>
+        </a>
+
+        <!-- About -->
+        <a href="{% url 'about' %}" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-amber-600 active:bg-amber-700 transition-all duration-300">
+          <i class="fas fa-circle-info text-amber-100"></i>
+          <span class="hidden sm:inline">About</span>
+        </a>
+
+        <!-- Contact -->
+        <a href="{% url 'contact' %}" class="flex items-center gap-2 px-3 py-2 rounded hover:bg-amber-600 active:bg-amber-700 transition-all duration-300">
+          <i class="fas fa-envelope text-amber-100"></i>
+          <span class="hidden sm:inline">Contact</span>
+        </a>
+
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

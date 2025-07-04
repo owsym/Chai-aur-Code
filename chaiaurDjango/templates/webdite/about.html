@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+About Us
+{% endblock %}
+
+{% block content %}
+
+<!-- Header Section -->
+<section class="bg-[rgb(1,22,29)] text-amber-100 py-16 px-4 text-center">
+  <h1 class="text-4xl md:text-5xl font-extrabold mb-4">About <span class="text-amber-400">Chai aur Code</span></h1>
+  <p class="text-lg md:text-xl max-w-3xl mx-auto text-amber-200">
+    Brewing ideas over a hot cup — we believe every great project starts with the perfect chai.
+  </p>
+</section>
+
+<!-- Story Section -->
+<section class="bg-amber-50 text-gray-800 py-16 px-6 md:px-12">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <img src="{% static 'images/about_tea_story1.png' %}" alt="Our Story" class="rounded-xl shadow-lg border w-full max-w-md mx-auto">
+    </div>
+    <div>
+      <h2 class="text-3xl font-bold mb-4 text-amber-900">Our Story</h2>
+      <p class="text-lg leading-relaxed">
+        "Chai aur Code" started with a group of developers who needed more than just caffeine — they needed culture, warmth, and a little spice. We began our journey by crafting premium chai blends that stimulate creativity, comfort the soul, and fuel long coding nights.
+      </p>
+      <p class="text-lg leading-relaxed mt-4">
+        Whether you're a designer, student, writer, or full-stack wizard — our chai is brewed to keep you going. One sip, and you're in the flow.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Mission Section -->
+<section class="bg-white text-gray-900 py-16 px-6 md:px-12">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-amber-900 mb-6">Our Mission</h2>
+    <p class="text-lg leading-relaxed">
+      To bring authentic, handcrafted chai to the digital workspace — because innovation tastes better with tradition. We strive to connect the vibrant chai culture with modern creators through taste, technology, and thoughtful storytelling.
+    </p>
+  </div>
+</section>
+
+<!-- Team/Testimonial Section -->
+<section class="bg-amber-100 text-gray-900 py-16 px-6 md:px-12">
+  <h2 class="text-3xl font-bold text-center mb-10">Meet the Founders</h2>
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
+    
+    <div class="bg-white p-6 rounded-xl shadow-md border border-amber-300">
+      <img src="{% static 'images/founder1.jpg' %}" alt="Founder 1" class="w-24 h-24 mx-auto mb-4 rounded-full border-2 border-amber-400 object-cover">
+      <h4 class="text-xl font-bold mb-1">Usman Farooq</h4>
+      <p class="text-sm text-gray-600">Backend Dev • Chai Strategist</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md border border-amber-300">
+      <img src="{% static 'images/founder3.jpg' %}" alt="Founder 2" class="w-24 h-24 mx-auto mb-4 rounded-full border-2 border-amber-400 object-cover">
+      <h4 class="text-xl font-bold mb-1">Ali Shah</h4>
+      <p class="text-sm text-gray-600">Frontend Artist • Masala Fan</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-md border border-amber-300">
+      <img src="{% static 'images/founder2.jpg' %}" alt="Founder 3" class="w-24 h-24 mx-auto mb-4 rounded-full border-2 border-amber-400 object-cover">
+      <h4 class="text-xl font-bold mb-1">Sara Rizwan</h4>
+      <p class="text-sm text-gray-600">Product Designer • Green Tea Lover</p>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
